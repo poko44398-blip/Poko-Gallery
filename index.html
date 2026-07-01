@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="th"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Minimalist Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@500;700&family=Noto+Sans+Thai:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern, Minimalist, & Vibrant Style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* ใช้ Noto Sans Thai เป็นหลัก และใช้ IBM Plex Sans Thai ในจุดที่ต้องการความเด่น */
+            font-family: 'Noto Sans Thai', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fc; /* Off-white, clean, and trustworthy */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden; /* Prevent scrollbars from frog animation */
+            position: relative;
+        }
+
+        /* Themed Content Container */
+        .welcome-container {
+            background-color: #ffffff;
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04); /* Subtle shadow for a clean look */
+            max-width: 550px;
+            width: 90%;
+            border: 1px solid #e1e8ed; /* Extra definition for security look */
+            z-index: 10; /* Ensure content is above frogs */
+        }
+
+        /* Clean, vibrant title */
+        h1 {
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            color: #2ecc71; /* A safe, fresh, "green light" color */
+            letter-spacing: -0.5px;
+            font-weight: 700;
+        }
+
+        /* Professional descriptions */
+        p {
+            color: #555;
+            margin-bottom: 35px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Modern button basics */
+        .btn {
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            display: block;
+            padding: 16px;
+            font-size: 1.15rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 14px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.2px;
+        }
+
+        /* Minimalist Hover Lift Effect */
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* SFW: Trustworthy Blue */
+        .btn-sfw {
+            background-color: #3498db; 
+            color: #ffffff;
+            border: 2px solid #3498db;
+        }
+
+        .btn-sfw:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        /* NSFW: Clear & Direct Red (Professional Warning) */
+        .btn-nsfw {
+            background-color: #e74c3c; 
+            color: #ffffff;
+            border: 2px solid #e74c3c;
+        }
+
+        .btn-nsfw:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+
+        /* Subtle modern footer */
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        footer p {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 0;
+        }
+
+        /* ---- FROG RAIN ANIMATION SYSTEM ---- */
+        .frog-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Let clicks pass through to content */
+            z-index: 1;
+        }
+
+        .frog {
+            position: absolute;
+            display: inline-block;
+            opacity: 0.8;
+            font-size: 2rem; /* Initial size, varied in script */
+            animation-name: frog-fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes frog-fall {
+            0% {
+                top: -50px;
+                transform: rotate(0deg);
+                opacity: 0.6;
+            }
+            100% {
+                top: 110%; /* Fall past the bottom edge */
+                transform: rotate(720deg); /* Multiple spins for complexity */
+                opacity: 0.1; /* Fade out as they exit */
+            }
+        }
+    </style></head><body>
+
+    <div class="frog-rain" id="frogRain"></div>
+
+    <div class="welcome-container">
+        <h1>WELCOME TO <br>MY GALLERY</h1>
+        <p>ยินดีต้อนรับสู่คลังอาร์ตเวิร์ก วิดีโอ และคลังข้อมูล OC ของฉัน <br>
+        โปรดเลือกทางเข้าที่เหมาะสมกับอายุของคุณ</p>
+
+        <div class="btn-group">
+            <a href="sfw.html" class="btn btn-sfw">เข้าชมผลงานทั่วไป (SFW)</a>
+            <a href="nsfw.html" class="btn btn-nsfw">เข้าชมผลงานผู้ใหญ่ (NSFW 18+)</a>
+        </div>
+
+        <footer>
+            <p>© 2026 YourName. Securely Presented. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const frogRainContainer = document.getElementById('frogRain');
+        const frogTypes = ['🐸', '🐸', '🐸', '🐸', '🐸']; 
+
+        function createFrog() {
+            const frog = document.createElement('div');
+            frog.classList.add('frog');
+            frog.innerText = frogTypes[Math.floor(Math.random() * frogTypes.length)];
+
+            frog.style.left = Math.random() * 100 + '%';
+            
+            const duration = Math.random() * 8 + 4;
+            frog.style.animationDuration = duration + 's';
+            
+            const size = Math.random() * 1.5 + 1; 
+            frog.style.fontSize = size + 'rem';
+            
+            frogRainContainer.appendChild(frog);
+
+            setTimeout(() => {
+                frog.remove();
+            }, duration * 1000);
+        }
+
+        for(let i=0; i<30; i++) {
+            createFrog();
+        }
+
+        setInterval(createFrog, 150);
+    </script></body></html>

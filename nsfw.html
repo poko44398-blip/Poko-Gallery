@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSFW Zone - Advanced Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@500;700&family=Noto+Sans+Thai:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* เปลี่ยนมาใช้ฟอนต์ Noto Sans Thai เป็นหลัก */
+            font-family: 'Noto Sans Thai', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            padding: 50px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-size: 2.6rem;
+            color: #ff5555;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            color: #888;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid #333;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            background-color: #1a1a1a;
+            border-color: #ff5555;
+            transform: translateY(-2px);
+        }
+
+        /* ================= สไตล์แกลเลอรี่แยกประเภท ================= */
+        .section-title {
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-size: 1.5rem;
+            margin: 50px 0 25px 0;
+            border-left: 4px solid #ff5555;
+            padding-left: 14px;
+            color: #ffb86c;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .gallery-item {
+            background-color: #141414;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            border: 1px solid #1f1f1f;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            border-color: #ff5555;
+            box-shadow: 0 12px 30px rgba(255, 85, 85, 0.15);
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            background-color: #000;
+        }
+
+        .item-info {
+            padding: 18px;
+        }
+
+        .item-info h3 {
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #eceff4;
+            line-height: 1.4;
+        }
+
+        /* ================= ระบบส่องภาพเต็มจอ (LightBox Modal) ================= */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 5, 5, 0.97);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(255, 55, 55, 0.1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #888;
+            font-size: 2.8rem;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: #ff5555;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NSFW GALLERY (18+)</h1>
+        <p>คลังเก็บผลงานเรตผู้ใหญ่และงานทดลองอนิเมชั่นของฉัน</p>
+        <a href="index.html" class="back-btn">⬅ กลับหน้าแรก</a>
+    </header>
+
+    <div class="gallery-container">
+
+        <h2 class="section-title" id="title-video">🎞️ Animations</h2>
+        <div class="grid" id="grid-video">
+            
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <video preload="auto" loop muted class="hover-video">
+                    <source src="videos/NSFW/nsfw-video.mp4" type="video/mp4">
+                </video>
+                <div class="item-info">
+                    <h3>Fenturio Summoners War</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="section-title" id="title-illustration">🎨 Images</h2>
+        <div class="grid" id="grid-illustration">
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="imag/nsfw/ไม่มีชื่อ 20_20260630183128.png" alt="Artwork 1">
+                <div class="item-info">
+                    <h3>Fenturio Summoners War</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <div id="lightbox-media-container" onclick="event.stopPropagation()"></div>
+    </div>
+
+
+    <script>
+        // ====== ระบบ Hover Play (ตั้งค่าขยับไปค้างไฟล์ภาพที่วินาทีที่ 2 อัตโนมัติ) ======
+        const hoverVideos = document.querySelectorAll('.hover-video');
+
+        hoverVideos.forEach(video => {
+            video.addEventListener('loadeddata', () => {
+                video.currentTime = 2;
+            });
+
+            if (video.readyState >= 2) {
+                video.currentTime = 2;
+            }
+
+            video.addEventListener('mouseenter', () => {
+                video.play().catch(err => console.log("Autoplay blocked:", err));
+            });
+
+            video.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 2;
+            });
+        });
+
+        // ====== ระบบดูเต็มจอแบบ Lightbox ======
+        const lightbox = document.getElementById('lightbox');
+        const lightboxContainer = document.getElementById('lightbox-media-container');
+
+        function openLightbox(element) {
+            lightboxContainer.innerHTML = ''; 
+            
+            const videoSource = element.querySelector('video');
+            const imgSource = element.querySelector('img');
+
+            if (videoSource) {
+                const cloneVideo = document.createElement('video');
+                cloneVideo.className = 'lightbox-content';
+                cloneVideo.src = videoSource.querySelector('source').src;
+                cloneVideo.controls = true;
+                cloneVideo.autoplay = true;
+                cloneVideo.loop = true;
+                lightboxContainer.appendChild(cloneVideo);
+            } else if (imgSource) {
+                const cloneImg = document.createElement('img');
+                cloneImg.className = 'lightbox-content';
+                cloneImg.src = imgSource.src;
+                lightboxContainer.appendChild(cloneImg);
+            }
+
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightboxContainer.innerHTML = ''; 
+            
+            hoverVideos.forEach(video => {
+                video.currentTime = 2;
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeLightbox();
+        });
+    </script>
+</body>
+</html>
