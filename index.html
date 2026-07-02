@@ -1,10 +1,10 @@
-<!DOCTYPE html><html lang="th"><head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Minimalist Gallery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@500;700&family=Noto+Sans+Thai:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         /* Modern, Minimalist, & Vibrant Style */
@@ -12,8 +12,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* ใช้ Noto Sans Thai เป็นหลัก และใช้ IBM Plex Sans Thai ในจุดที่ต้องการความเด่น */
-            font-family: 'Noto Sans Thai', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Noto Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
@@ -42,7 +41,7 @@
 
         /* Clean, vibrant title */
         h1 {
-            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-family: 'IBM Plex Sans', sans-serif;
             font-size: 2.4rem;
             margin-bottom: 20px;
             color: #2ecc71; /* A safe, fresh, "green light" color */
@@ -67,7 +66,7 @@
 
         /* Modern button basics */
         .btn {
-            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-family: 'IBM Plex Sans', sans-serif;
             display: block;
             padding: 16px;
             font-size: 1.15rem;
@@ -162,12 +161,12 @@
 
     <div class="welcome-container">
         <h1>WELCOME TO <br>MY GALLERY</h1>
-        <p>ยินดีต้อนรับสู่คลังอาร์ตเวิร์ก วิดีโอ และคลังข้อมูล OC ของฉัน <br>
-        โปรดเลือกทางเข้าที่เหมาะสมกับอายุของคุณ</p>
+        <p>Welcome to my repository of artwork, videos, and OC lore. <br>
+        Please choose the appropriate entrance based on your age.</p>
 
         <div class="btn-group">
-            <a href="sfw.html" class="btn btn-sfw">เข้าชมผลงานทั่วไป (SFW)</a>
-            <a href="nsfw.html" class="btn btn-nsfw">เข้าชมผลงานผู้ใหญ่ (NSFW 18+)</a>
+            <a href="sfw.html" class="btn btn-sfw">View General Art (SFW)</a>
+            <a href="nsfw.html" class="btn btn-nsfw">View Mature Content (NSFW 18+)</a>
         </div>
 
         <footer>
@@ -181,12 +180,11 @@
 
         function createFrog() {
             const frog = document.createElement('div');
+            const duration = Math.random() * 8 + 4;
             frog.classList.add('frog');
             frog.innerText = frogTypes[Math.floor(Math.random() * frogTypes.length)];
 
             frog.style.left = Math.random() * 100 + '%';
-            
-            const duration = Math.random() * 8 + 4;
             frog.style.animationDuration = duration + 's';
             
             const size = Math.random() * 1.5 + 1; 
