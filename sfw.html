@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio - Creative Gallery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@500;700&family=Noto+Sans+Thai:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;700&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* เปลี่ยนมาใช้ฟอนต์ Noto Sans Thai เป็นหลัก */
-            font-family: 'Noto Sans Thai', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Noto Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -29,7 +28,7 @@
         }
 
         header h1 {
-            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-family: 'IBM Plex Sans', sans-serif;
             font-size: 2.6rem;
             color: #4fc3f7;
             margin-bottom: 12px;
@@ -44,7 +43,7 @@
         }
 
         .back-btn {
-            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-family: 'IBM Plex Sans', sans-serif;
             display: inline-block;
             margin-top: 20px;
             color: #aaa;
@@ -64,9 +63,9 @@
             transform: translateY(-2px);
         }
 
-        /* ================= สไตล์แกลเลอรี่แยกประเภท ================= */
+        /* ================= Gallery Section Styles ================= */
         .section-title {
-            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-family: 'IBM Plex Sans', sans-serif;
             font-size: 1.5rem;
             margin: 50px 0 25px 0;
             border-left: 4px solid #4fc3f7;
@@ -117,14 +116,14 @@
         }
 
         .item-info h3 {
-            font-family: 'IBM Plex Sans Thai', sans-serif;
+            font-family: 'IBM Plex Sans', sans-serif;
             font-size: 1.1rem;
             font-weight: 500;
             color: #eceff4;
             line-height: 1.4;
         }
 
-        /* ================= ระบบส่องภาพเต็มจอ (LightBox Modal) ================= */
+        /* ================= LightBox Modal System ================= */
         .lightbox {
             position: fixed;
             top: 0;
@@ -175,8 +174,8 @@
 
     <header>
         <h1>CREATIVE PORTFOLIO</h1>
-        <p>คลังเก็บผลงานภาพวาด แอนิเมชัน และโปรเจกต์สร้างสรรค์ของฉัน</p>
-        <a href="index.html" class="back-btn">⬅ กลับหน้าแรก</a>
+        <p>A repository of my artwork, animations, and creative projects.</p>
+        <a href="index.html" class="back-btn">⬅ Back to Home</a>
     </header>
 
     <div class="gallery-container">
@@ -216,7 +215,7 @@
 
 
     <script>
-        // ====== ระบบ Hover Play และการตั้งค่าค้างที่วินาทีที่ 2 ======
+        // ====== Hover Play System & Set Initial Frame to 2nd Second ======
         const hoverVideos = document.querySelectorAll('.hover-video');
 
         hoverVideos.forEach(video => {
@@ -238,7 +237,7 @@
             });
         });
 
-        // ====== ระบบดูเต็มจอแบบ Lightbox ======
+        // ====== Lightbox Fullscreen System ======
         const lightbox = document.getElementById('lightbox');
         const lightboxContainer = document.getElementById('lightbox-media-container');
 
